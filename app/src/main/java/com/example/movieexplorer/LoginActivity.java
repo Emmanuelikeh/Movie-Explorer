@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(e != null){
                     activityLoginBinding.etUserPassword.startAnimation(shakeError());
                     activityLoginBinding.etUserName.startAnimation(shakeError());
-                    Toast.makeText(LoginActivity.this,"Login Failure", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,e.getMessage(), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 goMainActivity();
