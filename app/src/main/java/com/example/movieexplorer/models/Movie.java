@@ -22,7 +22,6 @@ public class Movie {
         voteAverage = jsonObject.getDouble("vote_average");
 
     }
-
     // no-arg, empty constructor required for Parceler
     public Movie() {}
 
@@ -45,10 +44,8 @@ public class Movie {
     public String getTitle() {
         return title;
     }
-
     public String getOverview() {
         return overview;
     }
-
     public Double getVoteAverage(){ return voteAverage;}
 }
