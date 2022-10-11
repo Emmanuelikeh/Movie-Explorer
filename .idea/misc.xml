@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/layout-land/item_movie.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
@@ -12,7 +13,7 @@
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.19628286491387126" />
         <entry key="app/src/main/res/layout/fragment_favourite.xml" value="0.15095194922937444" />
         <entry key="app/src/main/res/layout/fragment_now_playing.xml" value="0.15095194922937444" />
-        <entry key="app/src/main/res/layout/item_movie.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_movie.xml" value="0.165" />
         <entry key="app/src/main/res/menu/menu_bottom_navigation.xml" value="0.20051303976058144" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.335" />
       </map>
