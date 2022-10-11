@@ -2,9 +2,11 @@ package com.example.movieexplorer.adapters;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +16,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.movieexplorer.R;
 import com.example.movieexplorer.databinding.ItemMovieBinding;
+import com.example.movieexplorer.models.Favorites;
 import com.example.movieexplorer.models.Movie;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.List;
 import java.util.Objects;
@@ -44,12 +50,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
     public int getItemCount() {
         return movies.size();
     }
-    public class ViewHolder extends  RecyclerView.ViewHolder{
+    public class ViewHolder extends  RecyclerView.ViewHolder implements  View.OnClickListener{
         ItemMovieBinding itemMovieBinding;
 
         public ViewHolder(@NonNull ItemMovieBinding itemMovieBinding) {
             super(itemMovieBinding.getRoot());
             this.itemMovieBinding = itemMovieBinding;
+            itemMovieBinding.getRoot().setOnClickListener(this);
         }
         public void bind(Movie movie){
             itemMovieBinding.tvTitle.setText(movie.getTitle());
@@ -81,6 +88,31 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
 //                    .override(Target.SIZE_ORIGINAL* 2, Target.SIZE_ORIGINAL*2)
                         .transform(new RoundedCorners(radius))
                         .into(itemMovieBinding.ivPoster);
+            }
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            if(position != RecyclerView.NO_POSITION){
+                Movie movie = movies.get(position);
+                Favorites favorites = new Favorites();
+                favorites.setDescription(movie.getOverview());
+                favorites.setTitle(movie.getTitle());
+                favorites.setPoster(movie.getPosterPath());
+                favorites.setUser(ParseUser.getCurrentUser());
+                favorites.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if(e != null){
+                            Log.e("check this", e.getMessage().toString());
+                            Toast.makeText(context, "Failed to add to favorite" , Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(context, "added to favorites", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
 
         }
