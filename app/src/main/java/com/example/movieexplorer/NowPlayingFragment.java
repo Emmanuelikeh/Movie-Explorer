@@ -62,6 +62,8 @@ public class NowPlayingFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         fragmentNowPlayingBinding.rvMovies.setLayoutManager(linearLayoutManager);
 
+
+
         scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
@@ -92,6 +94,7 @@ public class NowPlayingFragment extends Fragment {
             }
             @Override
             public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+                Log.i("failed", "failed");
             }
         });
     }
@@ -110,6 +113,7 @@ public class NowPlayingFragment extends Fragment {
                     JSONArray results = jsonObject.getJSONArray("results");
                     movies.addAll(Movie.fromJsonArray(results));
                     movieAdapter.notifyDataSetChanged();
+                    movieAdapter.setStateRestorationPolicy(RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

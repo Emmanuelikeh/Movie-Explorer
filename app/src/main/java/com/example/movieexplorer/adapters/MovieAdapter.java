@@ -1,6 +1,7 @@
 package com.example.movieexplorer.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.airbnb.lottie.L;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.example.movieexplorer.DetailActivity;
 import com.example.movieexplorer.R;
 import com.example.movieexplorer.databinding.ItemMovieBinding;
 import com.example.movieexplorer.models.Favorites;
@@ -21,6 +23,8 @@ import com.example.movieexplorer.models.Movie;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 import java.util.Objects;
@@ -94,26 +98,34 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
         @Override
         public void onClick(View view) {
             int position = getAdapterPosition();
-            if(position != RecyclerView.NO_POSITION){
+            if (position != RecyclerView.NO_POSITION){
                 Movie movie = movies.get(position);
-                Favorites favorites = new Favorites();
-                favorites.setDescription(movie.getOverview());
-                favorites.setTitle(movie.getTitle());
-                favorites.setPoster(movie.getPosterPath());
-                favorites.setUser(ParseUser.getCurrentUser());
-                favorites.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if(e != null){
-                            Log.e("check this", e.getMessage().toString());
-                            Toast.makeText(context, "Failed to add to favorite" , Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            Toast.makeText(context, "added to favorites", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                Intent intent  = new Intent(context, DetailActivity.class);
+                intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
+                context.startActivity(intent);
             }
+
+            // TODO: handle saving data to the database
+//            if(position != RecyclerView.NO_POSITION){
+//                Movie movie = movies.get(position);
+//                Favorites favorites = new Favorites();
+//                favorites.setDescription(movie.getOverview());
+//                favorites.setTitle(movie.getTitle());
+//                favorites.setPoster(movie.getPosterPath());
+//                favorites.setUser(ParseUser.getCurrentUser());
+//                favorites.saveInBackground(new SaveCallback() {
+//                    @Override
+//                    public void done(ParseException e) {
+//                        if(e != null){
+//                            Log.e("check this", e.getMessage().toString());
+//                            Toast.makeText(context, "Failed to add to favorite" , Toast.LENGTH_SHORT).show();
+//                        }
+//                        else{
+//                            Toast.makeText(context, "added to favorites", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
+//            }
 
         }
     }

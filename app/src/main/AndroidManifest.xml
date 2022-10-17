@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.example.movieexplorer.ParseApplication"
+        android:name=".ParseApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,16 +17,19 @@
         android:theme="@style/Theme.MovieFinder"
         tools:targetApi="31">
         <activity
-            android:name="com.example.movieexplorer.MainActivity"
+            android:name=".DetailActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.movieexplorer.SignUpActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.movieexplorer.LoginActivity"
+            android:name=".SignUpActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.movieexplorer.SplashActivity"
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
