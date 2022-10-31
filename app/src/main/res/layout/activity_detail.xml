@@ -6,95 +6,143 @@
     android:layout_height="match_parent"
     tools:context=".DetailActivity">
 
-    <ImageView
-        android:id="@+id/ivPosterBackDrop"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/ivPosterMainDrop"
-        android:layout_width="120dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="150dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
-        android:text="Rating"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/ivPosterMainDrop"
-        app:layout_constraintTop_toBottomOf="@+id/tvDvTitle" />
+            <ImageView
+                android:id="@+id/ivPosterBackDrop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
-    <RatingBar
-        android:id="@+id/ratingBar"
-        style="@style/RatingBarr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:isIndicator="true"
-        android:numStars="5"
-        android:stepSize="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/tvDvTitle" />
+            <ImageView
+                android:id="@+id/ivPosterMainDrop"
+                android:layout_width="120dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="150dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tvDvTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/ivPosterMainDrop"
-        app:layout_constraintTop_toBottomOf="@+id/ivPosterBackDrop" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:text="Rating"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/ivPosterMainDrop"
+                app:layout_constraintTop_toBottomOf="@+id/tvDvTitle" />
 
-    <TextView
-        android:id="@+id/tvDvOverview"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="2dp"
-        android:text="TextView"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/ivPosterMainDrop"
-        app:layout_constraintTop_toBottomOf="@+id/btnWatchTrailer" />
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@style/RatingBarr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/tvDvTitle" />
 
-    <Button
-        android:id="@+id/btnWatchTrailer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="2dp"
-        android:text="Watch trailer"
-        app:layout_constraintStart_toEndOf="@+id/ivPosterMainDrop"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            <TextView
+                android:id="@+id/tvDvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:text="TextView"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/ivPosterMainDrop"
+                app:layout_constraintTop_toBottomOf="@+id/ivPosterBackDrop" />
 
-    <com.google.android.youtube.player.YouTubePlayerView
-        android:id="@+id/ytPlayer"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="20dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDvOverview" />
+            <TextView
+                android:id="@+id/tvDvOverview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/ivPosterMainDrop"
+                app:layout_constraintTop_toBottomOf="@+id/btnWatchTrailer" />
+
+            <Button
+                android:id="@+id/btnWatchTrailer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:text="Watch trailer"
+                app:layout_constraintStart_toEndOf="@+id/ivPosterMainDrop"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <com.google.android.youtube.player.YouTubePlayerView
+                android:id="@+id/ytPlayer"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDvOverview" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvComments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDvOverview" />
+
+            <EditText
+                android:id="@+id/etCommentbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="do you like the movie        "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvComments" />
+
+            <Button
+                android:id="@+id/btnAddComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="10dp"
+                android:text="Add Comment"
+                app:layout_constraintStart_toEndOf="@+id/etCommentbox"
+                app:layout_constraintTop_toBottomOf="@+id/rvComments" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
