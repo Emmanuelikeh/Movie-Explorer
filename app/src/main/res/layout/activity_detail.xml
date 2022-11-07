@@ -80,13 +80,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
                 android:text="TextView"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/ivPosterMainDrop"
-                app:layout_constraintTop_toBottomOf="@+id/btnWatchTrailer" />
+                app:layout_constraintTop_toBottomOf="@+id/btnAddFavourite" />
 
             <Button
                 android:id="@+id/btnWatchTrailer"
@@ -102,7 +102,7 @@
                 android:id="@+id/ytPlayer"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -111,33 +111,73 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvComments"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvDvOverview" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
             <EditText
                 android:id="@+id/etCommentbox"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:hint="do you like the movie        "
+                app:layout_constraintEnd_toStartOf="@+id/btnAddComment"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rvComments" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ytPlayer">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:text="Comments"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imgbtnComments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:src="@drawable/ic_baseline_arrow_drop_down_24" />
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/btnAddComment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:text="Add Comment"
-                app:layout_constraintStart_toEndOf="@+id/etCommentbox"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rvComments" />
+
+            <Button
+                android:id="@+id/btnAddFavourite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:text="Add Favourite"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@+id/ivPosterMainDrop"
+                app:layout_constraintTop_toBottomOf="@+id/btnWatchTrailer" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

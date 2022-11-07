@@ -1,6 +1,7 @@
 package com.example.movieexplorer.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.example.movieexplorer.DetailActivity;
 import com.example.movieexplorer.databinding.ItemMovieBinding;
 import com.example.movieexplorer.models.Favorites;
 import com.parse.DeleteCallback;
@@ -63,11 +65,12 @@ public class FavouriteMovieAdapter extends RecyclerView.Adapter<FavouriteMovieAd
         notifyItemRemoved(position);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ItemMovieBinding itemMovieBinding;
         public ViewHolder(@NonNull ItemMovieBinding itemMovieBinding) {
             super(itemMovieBinding.getRoot());
             this.itemMovieBinding = itemMovieBinding;
+            itemMovieBinding.getRoot().setOnClickListener(this);
         }
 
         public void bind(Favorites favorites) {
@@ -77,5 +80,16 @@ public class FavouriteMovieAdapter extends RecyclerView.Adapter<FavouriteMovieAd
             Glide.with(context).load(favorites.getPoster()).transform(new RoundedCorners(radius)).into(itemMovieBinding.ivPoster);
         }
 
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION){
+                Favorites favorites = favoriteMovies.get(position);
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("favorite", favorites);
+                context.startActivity(intent);
+            }
+
+        }
     }
 }
