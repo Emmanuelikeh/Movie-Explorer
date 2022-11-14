@@ -12,4 +12,9 @@
         android:icon="@android:drawable/btn_star"
         android:title="Favorites"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="profile"
+        app:showAsAction="always" />
 </menu>

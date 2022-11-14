@@ -44,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_favourite:
                         fragment = new FavouriteFragment();
                         break;
+                    case R.id.action_profile:
+                        fragment = new ProfileFragment();
+                        break;
                     default:
                         fragment = new NowPlayingFragment();
                         break;
